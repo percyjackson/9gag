@@ -54,7 +54,11 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-  resources :pins
+  resources :pins do
+    member do
+      put "like", to: "pins#upvote"
+    end
+  end
   
   root "pins#index"
 end
