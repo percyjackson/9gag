@@ -4,6 +4,14 @@
       = link_to (image_tag pin.image.url), pin
       .panel-body
         %h2= link_to pin.title, pin
-        %p.user
-        Submited by
-        =pin.user.email
+      .panel-footer
+        .row
+          .col-md-6
+            %p.user
+            Submited by
+            =pin.user.email
+          .col-md-6
+            .btn-group.pull-right
+              = link_to like_pin_path(pin), method: :put, class: "btn btn-default" do
+                %span.glyphicon.glyphicon-heart
+                  =pin.get_upvotes.size
